@@ -1,27 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import FancyButton from "./FancyButton"
-
-const FormContainer = styled.div`
-  width: 100%;
-  padding: 2rem;
-  background-color: white;
-  box-shadow: 10px 10px 15px rgba(0,0,0,0.2);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-
-  h4 {
-    text-align: center;
-    font-weight: 400;
-  }
-
-  @media screen and (min-width: 740px){
-    width: 60%;
-  }
-`
+import LoadingForm from "./LoadingForm"
 
 const FancyFormGroup = styled.div`
   width: 70%;
@@ -51,8 +31,17 @@ const FancyFormGroup = styled.div`
 `;
 
 const RegistrationForm = () => {
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+  }
+
   return (
-    <FormContainer>
+    <LoadingForm loading={loading} formType="registration">
       <h4>Registration</h4>
       <form>
         <FancyFormGroup>
@@ -72,9 +61,9 @@ const RegistrationForm = () => {
           <label htmlFor="name">Password Confirmation</label>
           <input type="password" name="password_confirm" placeholder="Password"/>
         </FancyFormGroup>
-        <FancyButton center>Submit</FancyButton>
+        <FancyButton onClick={() => handleSubmit()} center>Submit</FancyButton>
       </form>
-    </FormContainer>
+    </LoadingForm>
   )
 }
 

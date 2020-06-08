@@ -3,12 +3,16 @@ import ReactDOM from "react-dom";
 import "./styles/base.scss";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "mobx-react";
+import registrationStore from "./stores/registrationStore";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider registrationStore={registrationStore}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 

@@ -1,7 +1,9 @@
-import React, {useState} from 'react'
-import styled from 'styled-components'
-import FancyButton from "./FancyButton"
-import LoadingForm from "./LoadingForm"
+import React, { useState } from "react";
+import { observer } from "mobx-react";
+import styled from "styled-components";
+import FancyButton from "./FancyButton";
+import LoadingForm from "./LoadingForm";
+import useStores from "../hooks/useStores";
 
 const FancyFormGroup = styled.div`
   width: 70%;
@@ -30,41 +32,85 @@ const FancyFormGroup = styled.div`
   }
 `;
 
-const RegistrationForm = () => {
-  const [loading, setLoading] = useState(false)
+const ListItem = styled.li`
+  list-style: none;
+  color: #ef0e0e;
+  margin: 0;
+`;
 
-  const handleSubmit = () => {
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-  }
+const RegistrationForm = () => {
+  const { registrationStore } = useStores();
+  const {
+    name,
+    email,
+    password,
+    passwordConfirm,
+  } = registrationStore.registration;
 
   return (
-    <LoadingForm loading={loading} formType="registration">
+    <LoadingForm loading={registrationStore.submitting} formType="registration">
       <h4>Registration</h4>
-      <form>
+      <form onSubmit={(e) => registrationStore.handleSubmit(e)}>
         <FancyFormGroup>
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" placeholder="Full Name"/>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            placeholder="Full Name"
+            onChange={(e) => registrationStore.handleRegistration(e)}
+          />
         </FancyFormGroup>
         <FancyFormGroup>
           <label htmlFor="name">Email</label>
-          <input type="text" name="email" placeholder="Valid Email"/>
+          <input
+            type="text"
+            name="email"
+            value={email}
+            placeholder="Valid Email"
+            onChange={(e) => registrationStore.handleRegistration(e)}
+          />
         </FancyFormGroup>
         <FancyFormGroup>
           <label htmlFor="name">Password</label>
-          <input type="password" name="password" placeholder="Password"/>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => registrationStore.handleRegistration(e)}
+          />
           <small>Required min. 8 characters.</small>
         </FancyFormGroup>
         <FancyFormGroup>
           <label htmlFor="name">Password Confirmation</label>
-          <input type="password" name="password_confirm" placeholder="Password"/>
+          <input
+            type="password"
+            name="passwordConfirm"
+            value={passwordConfirm}
+            placeholder="Password"
+            onChange={(e) => registrationStore.handleRegistration(e)}
+          />
         </FancyFormGroup>
-        <FancyButton onClick={() => handleSubmit()} center>Submit</FancyButton>
+        <FancyFormGroup>
+          {registrationStore.errors.length > 0 ? (
+            <ul>
+              {registrationStore.errors.map((error, idx) => {
+                return (
+                  <ListItem key={idx}>
+                    <small>{error}</small>
+                  </ListItem>
+                );
+              })}
+            </ul>
+          ) : (
+            ""
+          )}
+        </FancyFormGroup>
+        <FancyButton center>Submit</FancyButton>
       </form>
     </LoadingForm>
-  )
-}
+  );
+};
 
-export default RegistrationForm
+export default observer(RegistrationForm);

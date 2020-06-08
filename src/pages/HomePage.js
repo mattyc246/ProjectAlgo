@@ -120,7 +120,7 @@ const HomePage = () => {
               guarantee. For whatever reason, if you decide our platform is not
               right for you, you are entitled to a full refund.
             </ContentBody>
-            <FancyLink>USD499 / Year</FancyLink>
+            <FancyLink center={true}>USD499 / Year</FancyLink>
           </div>
           <div className="col-12 col-lg-4 offset-lg-1">
             <img src={MockUp} alt="mockup" width="100%" />

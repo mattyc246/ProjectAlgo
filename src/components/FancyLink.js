@@ -15,6 +15,7 @@ const StyledLink = styled(Link)`
   color: black;
   text-decoration: none;
   font-size: smaller;
+  margin: 1rem ${props => props.center ? 'auto' : 0};
 `;
 
 const FancyLink = (props) => {

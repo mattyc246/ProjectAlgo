@@ -120,7 +120,7 @@ const HomePage = () => {
               guarantee. For whatever reason, if you decide our platform is not
               right for you, you are entitled to a full refund.
             </ContentBody>
-            <FancyLink center={true}>USD499 / Year</FancyLink>
+            <FancyLink to="/" center={true}>USD499 / Year</FancyLink>
           </div>
           <div className="col-12 col-lg-4 offset-lg-1">
             <img src={MockUp} alt="mockup" width="100%" />
@@ -129,7 +129,7 @@ const HomePage = () => {
       </ContentWrapper>
       <ContentWrapper bgColor="primary">
         <ContentTitle color="white">WHAT DO I GET ACCESS TO?</ContentTitle>
-        <ContentBody color="white">
+
           <div className="row">
             <div className="col-12 col-lg-4">
               <ContentCard color="white">
@@ -165,7 +165,6 @@ const HomePage = () => {
               </ContentCard>
             </div>
           </div>
-        </ContentBody>
       </ContentWrapper>
       <Footer />
     </>

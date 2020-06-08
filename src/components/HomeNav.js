@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Graph from "../assets/icons/report.png"
-import { Link } from "react-router-dom"
+import FancyLink from "./FancyLink"
+import {Link} from "react-router-dom"
 
 const NavBar = styled.nav`
   width: 100%;
@@ -47,16 +48,6 @@ const NavLinks = styled.div`
   }
 `;
 
-const FancyLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  background-color: #41487b;
-  color: white!important;
-  justify-content: center;
-  width: 100px;
-  height: 40px;
-`;
-
 const HomeNav = () => {
   return (
     <NavBar>
@@ -66,7 +57,7 @@ const HomeNav = () => {
       </NavBrand>
       <NavLinks>
         <Link to="/">CONTACT</Link>
-        <FancyLink to="/login">Log In</FancyLink>
+        <FancyLink to="/login" size="sm">Log In</FancyLink>
       </NavLinks>
     </NavBar>
   )

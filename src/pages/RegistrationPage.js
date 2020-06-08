@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {useParams, Redirect} from 'react-router-dom'
 import Layout from "../components/Layout"
 import HomeNav from '../components/HomeNav'
+import RegistrationForm from '../components/RegistrationForm'
 
 const RegistrationPage = (props) => {
   const {inviteCode} = useParams()
@@ -24,6 +25,7 @@ const RegistrationPage = (props) => {
   return (
     <Layout>
       <HomeNav />
+      <RegistrationForm />
     </Layout>
   )
 }

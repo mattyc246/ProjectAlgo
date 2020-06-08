@@ -1,25 +1,28 @@
-import React, {useEffect, useState} from 'react'
-import {useParams, Redirect} from 'react-router-dom'
-import Layout from "../components/Layout"
-import HomeNav from '../components/HomeNav'
-import RegistrationForm from '../components/RegistrationForm'
+import React, { useEffect, useState } from "react";
+import { useToasts } from "react-toast-notifications";
+import { useParams, Redirect } from "react-router-dom";
+import Layout from "../components/Layout";
+import HomeNav from "../components/HomeNav";
+import RegistrationForm from "../components/RegistrationForm";
 
 const RegistrationPage = (props) => {
-  const {inviteCode} = useParams()
-  const [validCode, setValidCode] = useState(true)
+  const { inviteCode } = useParams();
+  const { addToast } = useToasts();
+  const [validCode, setValidCode] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      if(inviteCode === 'validCode'){
-        setValidCode(true)
+      if (inviteCode === "validCode") {
+        setValidCode(true);
       } else {
-        setValidCode(false)
+        setValidCode(false);
+        addToast("Invalid invite code", { appearance: "error", autoDismiss: true });
       }
-    }, 5000)
-  }, [])
+    }, 5000);
+  }, []);
 
   if (!validCode) {
-    return <Redirect to="/" />
+    return <Redirect to="/" />;
   }
 
   return (
@@ -27,7 +30,7 @@ const RegistrationPage = (props) => {
       <HomeNav />
       <RegistrationForm />
     </Layout>
-  )
-}
+  );
+};
 
-export default RegistrationPage
+export default RegistrationPage;

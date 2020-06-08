@@ -46,7 +46,7 @@ class RegistrationStore {
     this.registration[e.target.name] = e.target.value;
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = (e, callback) => {
     e.preventDefault();
 
     this.validateForm()
@@ -55,8 +55,15 @@ class RegistrationStore {
       this.submitting = true
       setTimeout(() => {
         this.submitting = false
+        callback("Successfully registered!", {
+          appearance: "success",
+          autoDismiss: true,
+        });
       }, 3000)
+    } else {
+      callback('Invalid registration, check the errors below', {appearance: 'error', autoDismiss: true})
     }
+
   }
 }
 

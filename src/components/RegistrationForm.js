@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useToasts } from "react-toast-notifications";
 import { observer } from "mobx-react";
 import styled from "styled-components";
 import FancyButton from "./FancyButton";
@@ -43,6 +44,7 @@ const FancyList = styled.ul`
 `;
 
 const RegistrationForm = () => {
+  const { addToast } = useToasts();
   const { registrationStore } = useStores();
   const {
     name,
@@ -54,7 +56,7 @@ const RegistrationForm = () => {
   return (
     <LoadingForm loading={registrationStore.submitting} formType="registration">
       <h4>Registration</h4>
-      <form onSubmit={(e) => registrationStore.handleSubmit(e)}>
+      <form onSubmit={(e) => registrationStore.handleSubmit(e, addToast)}>
         <FancyFormGroup>
           <label htmlFor="name">Name</label>
           <input

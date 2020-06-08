@@ -32,10 +32,14 @@ const FancyFormGroup = styled.div`
   }
 `;
 
-const ListItem = styled.li`
-  list-style: none;
-  color: #ef0e0e;
-  margin: 0;
+const FancyList = styled.ul`
+  padding: 0;
+
+  li {
+    list-style: none;
+    color: #ef0e0e;
+    margin: 3px 0;
+  }
 `;
 
 const RegistrationForm = () => {
@@ -94,15 +98,15 @@ const RegistrationForm = () => {
         </FancyFormGroup>
         <FancyFormGroup>
           {registrationStore.errors.length > 0 ? (
-            <ul>
+            <FancyList>
               {registrationStore.errors.map((error, idx) => {
                 return (
-                  <ListItem key={idx}>
+                  <li key={idx}>
                     <small>{error}</small>
-                  </ListItem>
+                  </li>
                 );
               })}
-            </ul>
+            </FancyList>
           ) : (
             ""
           )}

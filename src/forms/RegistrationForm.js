@@ -2,7 +2,7 @@ import React from "react";
 import { useToasts } from "react-toast-notifications";
 import { observer } from "mobx-react";
 import styled from "styled-components";
-import FancyButton from "./FancyButton";
+import FancyButton from "../components/FancyButton";
 import LoadingForm from "./LoadingForm";
 import useStores from "../hooks/useStores";
 

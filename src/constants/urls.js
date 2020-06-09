@@ -8,6 +8,10 @@ class URL {
   validateInvite = (inviteCode) => {
     return this.baseUrl + `/users/${inviteCode}/verify`
   }
+
+  login = () => {
+    return this.baseUrl + "/users/signin"
+  }
 }
 
 const url = new URL()

@@ -5,7 +5,7 @@ import { useParams, Redirect } from "react-router-dom";
 import useStores from "../hooks/useStores"
 import Layout from "../components/Layout";
 import HomeNav from "../components/HomeNav";
-import RegistrationForm from "../components/RegistrationForm";
+import RegistrationForm from "../forms/RegistrationForm";
 
 const RegistrationPage = (props) => {
   const { inviteCode } = useParams();

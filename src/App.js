@@ -8,6 +8,7 @@ const App = () => {
     <Switch>
       <Route exact path="/" component={(props) => <HomePage {...props} />} />
       <Route path="/invite/:inviteCode" component={(props) => <RegistrationPage {...props} />} />
+      <Route path="/login" component={(props) => <LoginPage {...props} />} />
     </Switch>
   );
 }

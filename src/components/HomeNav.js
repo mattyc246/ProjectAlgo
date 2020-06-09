@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Graph from "../assets/icons/report.png"
 import FancyLink from "./FancyLink"
-import {Link} from "react-router-dom"
+// import {Link} from "react-router-dom"
 
 const NavBar = styled.nav`
   width: 100%;
@@ -56,7 +56,7 @@ const HomeNav = () => {
         <h2 className="ml-2">PROJECTALGO</h2>
       </NavBrand>
       <NavLinks>
-        <Link to="/">CONTACT</Link>
+        {/* <Link to="/">CONTACT</Link> */}
         <FancyLink to="/login" size="sm">Log In</FancyLink>
       </NavLinks>
     </NavBar>

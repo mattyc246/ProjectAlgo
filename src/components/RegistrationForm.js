@@ -54,7 +54,7 @@ const RegistrationForm = () => {
   } = registrationStore.registration;
 
   return (
-    <LoadingForm loading={registrationStore.submitting} formType="registration">
+    <LoadingForm loading={registrationStore.submitting} message={registrationStore.message}>
       <h4>Registration</h4>
       <form onSubmit={(e) => registrationStore.handleSubmit(e, addToast)}>
         <FancyFormGroup>

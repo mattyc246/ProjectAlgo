@@ -37,7 +37,7 @@ const Loader = styled.div`
   align-items: center;
 `
 
-const LoadingForm = ({loading, formType, children}) => {
+const LoadingForm = ({loading, message, children}) => {
   return (
     <Container>
       <FormContainer>
@@ -45,7 +45,7 @@ const LoadingForm = ({loading, formType, children}) => {
           loading ? (
             <Loader>
               <img src={LoadingIndicator} alt="loader" />
-              <small>{formType === "logIn" ? "Logging In" : "Registering"}...</small>
+              <small>{message}...</small>
             </Loader>
           ) : children
         }

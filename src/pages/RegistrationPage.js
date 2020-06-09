@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { observer } from "mobx-react";
 import { useToasts } from "react-toast-notifications";
 import { useParams, Redirect } from "react-router-dom";
@@ -11,34 +11,24 @@ const RegistrationPage = (props) => {
   const { inviteCode } = useParams();
   const { addToast } = useToasts();
   const { registrationStore } = useStores();
-  const [validCode, setValidCode] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (inviteCode === "validCode") {
-        setValidCode(true);
-      } else {
-        setValidCode(false);
-        addToast("Invalid invite code", {
-          appearance: "error",
-          autoDismiss: true,
-        });
-      }
-    }, 5000);
+    registrationStore.validateInviteCode(inviteCode)
   }, []);
 
   if(registrationStore.registrationSuccessful){
     return <Redirect to="/login" />
   }
 
-  if (!validCode) {
+  if (!registrationStore.validInvite) {
+    addToast('Invalid invite code', {appearance: 'error', autoDismiss: true})
     return <Redirect to="/" />;
   }
 
   return (
     <Layout>
       <HomeNav />
-      <RegistrationForm />
+      <RegistrationForm inviteCode={inviteCode} />
     </Layout>
   );
 };

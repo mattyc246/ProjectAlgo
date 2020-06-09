@@ -4,6 +4,10 @@ class URL {
   register = () => {
     return this.baseUrl + "/users/";
   };
+
+  validateInvite = (inviteCode) => {
+    return this.baseUrl + `/users/${inviteCode}/verify`
+  }
 }
 
 const url = new URL()

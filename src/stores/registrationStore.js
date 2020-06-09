@@ -5,15 +5,39 @@ import axios from "axios";
 class RegistrationStore {
   submitting = false;
   message = ""
+  validRegistration = false;
+  errors = [];
+  registrationSuccessful = false;
   registration = {
     name: "",
     email: "",
     password: "",
     passwordConfirm: "",
   };
-  validRegistration = false;
-  errors = [];
-  registrationSuccessful = false;
+  validInvite = true;
+
+  reset = () => {
+    this.submitting = false;
+    this.message = ""
+  }
+
+  validateInviteCode = (inviteCode) => {
+    this.submitting = true
+    this.message = "Validating invite code"
+    axios.get(url.validateInvite(inviteCode))
+    .then((result) => {
+      if(result.data.valid){
+        this.reset()
+        this.validInvite = true
+      } else {
+        this.reset()
+        this.validInvite = false
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
 
   validateForm = () => {
     this.errors = [];
@@ -50,7 +74,7 @@ class RegistrationStore {
     this.registration[e.target.name] = e.target.value;
   };
 
-  handleSubmit = (e, callback) => {
+  handleSubmit = (e, inviteCode, callback) => {
     e.preventDefault();
 
     this.validateForm();
@@ -66,6 +90,7 @@ class RegistrationStore {
             email: this.registration.email,
             password: this.registration.password,
           },
+          invite_code: inviteCode
         })
         .then((result) => {
           this.submitting = false;
@@ -87,8 +112,7 @@ class RegistrationStore {
         })
         .catch((err) => {
           console.log(err);
-          this.submitting = false;
-          this.message = ""
+          this.reset()
           callback("Registration unsuccessful, please try again", {
             appearance: "error",
             autoDismiss: true,
@@ -108,8 +132,10 @@ decorate(RegistrationStore, {
   registration: observable,
   errors: observable,
   registrationSuccessful: observable,
+  validInvite: observable,
   handleRegistration: action,
   handleSubmit: action,
+  validateInviteCode: action
 });
 
 const registrationStore = new RegistrationStore();

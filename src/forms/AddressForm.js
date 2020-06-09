@@ -1,4 +1,5 @@
 import React from 'react'
+import Loader from "../assets/images/loader-alt.svg"
 import styled from "styled-components"
 
 const FancyFormGroup = styled.div`
@@ -22,7 +23,15 @@ const FancyFormGroup = styled.div`
   }
 `;
 
-const AddressForm = ({billingDetails, setBillingDetails}) => {
+const LoaderBox = styled.div`
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const AddressForm = ({billingDetails, setBillingDetails, submitting}) => {
 
   const handleChange = (e) => {
     let newState = {...billingDetails}
@@ -32,10 +41,20 @@ const AddressForm = ({billingDetails, setBillingDetails}) => {
     setBillingDetails(newState)
   }
 
+  if(submitting){
+    return (
+      <LoaderBox>
+        <img src={Loader} alt="loader" />
+        <small>Payment processing, please wait...</small>
+        <small>Note: DO NOT refresh the page.</small>
+      </LoaderBox>
+    );
+  }
+
   return (
     <div className="row">
       <div className="col-12">
-        <h5 className="left">Billing Address:</h5>
+        <h5>Billing Address:</h5>
       </div>
       <div className="col-6">
         <FancyFormGroup>

@@ -37,6 +37,7 @@ const PaymentSummary = ({ billingDetails, name }) => {
       <p>Billing Address:</p>
       <small>{billingDetails.address1}</small>
       <small>{billingDetails.address2}</small>
+      <small>{billingDetails.city}</small>
       <small>{billingDetails.state}</small>
       <small>{billingDetails.postcode}</small>
       <small>{billingDetails.country}</small>

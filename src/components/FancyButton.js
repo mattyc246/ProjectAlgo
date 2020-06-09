@@ -12,7 +12,8 @@ const StyledButton = styled.button`
   text-decoration: none;
   font-size: smaller;
   margin: 1rem ${(props) => (props.center ? "auto" : 0)};
-
+  cursor: pointer;
+  
   :disabled {
     opacity: 0.5;
   }

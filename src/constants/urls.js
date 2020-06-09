@@ -12,6 +12,10 @@ class URL {
   login = () => {
     return this.baseUrl + "/users/signin"
   }
+
+  requestPaymentIntent = () => {
+    return this.baseUrl + '/memberships/checkout'
+  }
 }
 
 const url = new URL()

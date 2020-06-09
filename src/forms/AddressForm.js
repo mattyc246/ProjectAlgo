@@ -31,7 +31,7 @@ const LoaderBox = styled.div`
   align-items: center;
 `
 
-const AddressForm = ({billingDetails, setBillingDetails, submitting}) => {
+const AddressForm = ({billingDetails, setBillingDetails, submitting, paymentSuccess}) => {
 
   const handleChange = (e) => {
     let newState = {...billingDetails}
@@ -39,6 +39,16 @@ const AddressForm = ({billingDetails, setBillingDetails, submitting}) => {
     newState[e.target.name] = e.target.value
 
     setBillingDetails(newState)
+  }
+
+  if(paymentSuccess){
+    return(
+      <LoaderBox>
+        <h2>Payment Successful!</h2>
+        <img src={Loader} alt="loader" />
+        <h6>Please wait while you are redirected.</h6>
+      </LoaderBox>
+    )
   }
 
   if(submitting){
@@ -74,6 +84,17 @@ const AddressForm = ({billingDetails, setBillingDetails, submitting}) => {
             name="address2"
             value={billingDetails.address2}
             placeholder="Address Line 2"
+            onChange={(e) => handleChange(e)}
+          />
+        </FancyFormGroup>
+      </div>
+      <div className="col-12">
+        <FancyFormGroup>
+          <input
+            type="text"
+            name="city"
+            value={billingDetails.city}
+            placeholder="City"
             onChange={(e) => handleChange(e)}
           />
         </FancyFormGroup>

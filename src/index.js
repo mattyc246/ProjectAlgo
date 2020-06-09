@@ -3,14 +3,19 @@ import ReactDOM from "react-dom";
 import "./styles/base.scss";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { ToastProvider } from "react-toast-notifications";
+import { Provider } from "mobx-react";
+import registrationStore from "./stores/registrationStore";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+  <ToastProvider>
+    <Provider registrationStore={registrationStore}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </ToastProvider>,
   document.getElementById("root")
 );
 

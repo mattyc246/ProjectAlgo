@@ -8,6 +8,11 @@ import LoginForm from "../forms/LoginForm";
 
 const LoginPage = () => {
   const { userStore } = useStores();
+  const { membership } = userStore.userData
+
+  if(userStore.loggedIn && !membership){
+    return <Redirect to="/membership/checkout" />
+  }
 
   if (userStore.loggedIn) {
     return <Redirect to="/dashboard" />;

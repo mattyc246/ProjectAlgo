@@ -16,6 +16,7 @@ const Nav = styled.nav`
   align-items: flex-start;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   overflow-y: hidden;
+  z-index: 2;
 
   img {
     width: 20px;

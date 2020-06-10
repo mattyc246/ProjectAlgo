@@ -16,8 +16,12 @@ class URL {
   requestPaymentIntent = () => {
     return this.baseUrl + "/memberships/checkout";
   };
+
+  paymentSuccess = () => {
+    return this.baseUrl + "/memberships/";
+  };
 }
 
-const url = new URL()
+const url = new URL();
 
 export default url;

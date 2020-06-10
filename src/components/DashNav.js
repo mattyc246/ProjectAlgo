@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Graph from "../assets/icons/report-white.png"
+import Graph from "../assets/icons/report-white.png";
 import Burger from "../assets/icons/open-menu.png";
 import Exit from "../assets/icons/logout.png";
+import { useToasts } from "react-toast-notifications";
+import useStores from "../hooks/useStores";
 
 const Nav = styled.nav`
   height: 100%;
@@ -70,6 +72,9 @@ const NavButton = styled(Link)`
 `;
 
 const DashNav = ({ expanded, setExpanded }) => {
+  const { addToast } = useToasts();
+  const {userStore} = useStores();
+
   return (
     <Nav expanded={expanded}>
       <NavBrand expanded={expanded}>
@@ -86,7 +91,10 @@ const DashNav = ({ expanded, setExpanded }) => {
       </NavBrand>
       <NavBox></NavBox>
       <NavFooter>
-        <NavButton expanded={expanded}>
+        <NavButton
+          onClick={() => userStore.logout(addToast)}
+          expanded={expanded}
+        >
           <img src={Exit} alt="sign-out" width="25px" />
           <small>Sign Out</small>
         </NavButton>

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import HomeNav from "../components/HomeNav"
 import FancyLink from "../components/FancyLink"
-import ContentWrapper from "../components/ContentWrapper"
+import ContentWrapper from "../containers/ContentWrapper"
 import Footer from "../components/Footer"
 import Chart from "../assets/images/chart.png";
 import MockUp from "../assets/images/mockup.png"

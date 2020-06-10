@@ -36,6 +36,8 @@ class RegistrationStore {
     })
     .catch((err) => {
       console.log(err)
+      this.reset()
+      this.validInvite = false
     })
   }
 

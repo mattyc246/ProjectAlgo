@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { useToasts } from "react-toast-notifications";
 import { useParams, Redirect } from "react-router-dom";
 import useStores from "../hooks/useStores"
-import Layout from "../components/Layout";
+import Layout from "../containers/Layout";
 import HomeNav from "../components/HomeNav";
 import RegistrationForm from "../forms/RegistrationForm";
 

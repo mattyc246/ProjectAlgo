@@ -22,12 +22,18 @@ class UserStore {
   loggingIn = false;
 
   setUserDetails = (authToken, userData) => {
-    localStorage.setItem("authToken", JSON.stringify(authToken));
+    localStorage.setItem("authToken", authToken);
     localStorage.setItem("userData", btoa(JSON.stringify(userData)));
     this.userData = userData
     this.loggedIn = authToken
     this.userToken = authToken
   };
+
+  updateMembership = (membership, callback) => {
+    this.userData.membership = membership
+    localStorage.setItem('userData', btoa(JSON.stringify(this.userData)))
+    callback.push('/dashboard')
+  }
 
   handleLogin = (e, callback) => {
     e.preventDefault();
@@ -55,7 +61,7 @@ class UserStore {
         this.setUserDetails(token, userData)
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
         if (err.response.status === 401) {
           this.loggingIn = false;
           callback("Invalid email/password combination", {

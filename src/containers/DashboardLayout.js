@@ -24,7 +24,7 @@ const FrontLayer = styled.div`
 `;
 
 const MainContent = styled.div`
-  width: ${(props) => (props.expanded ? "80%" : "95%")};
+  width: ${(props) => (props.expanded ? "calc(100% - 288px)" : "calc(100% - 72px)")};
   height: 100%;
   transition: 0.5s ease;
 

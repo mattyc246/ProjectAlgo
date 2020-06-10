@@ -1,21 +1,21 @@
 class URL {
-  baseUrl = "https://7ffc22a3d576.ngrok.io/api/v1";
+  baseUrl = "https://d76632eb6d87.ngrok.io/api/v1";
 
   register = () => {
     return this.baseUrl + "/users/";
   };
 
   validateInvite = (inviteCode) => {
-    return this.baseUrl + `/users/${inviteCode}/verify`
-  }
+    return this.baseUrl + `/users/${inviteCode}/verify`;
+  };
 
   login = () => {
-    return this.baseUrl + "/users/signin"
-  }
+    return this.baseUrl + "/users/signin";
+  };
 
   requestPaymentIntent = () => {
-    return this.baseUrl + '/memberships/checkout'
-  }
+    return this.baseUrl + "/memberships/checkout";
+  };
 }
 
 const url = new URL()

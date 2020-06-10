@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { observer } from "mobx-react";
 import useStores from "../hooks/useStores";
-import Layout from "../components/Layout";
+import Layout from "../containers/Layout";
 import HomeNav from "../components/HomeNav";
 import LoginForm from "../forms/LoginForm";
 

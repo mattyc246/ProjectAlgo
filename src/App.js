@@ -3,8 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import RegistrationPage from "./pages/RegistrationPage"
 import LoginPage from "./pages/LoginPage"
-import PrivateRoute from './components/PrivateRoute';
 import PaymentPage from './pages/PaymentPage';
+import PrivateRoute from './components/PrivateRoute';
 import {Elements} from "@stripe/react-stripe-js"
 import {loadStripe} from "@stripe/stripe-js"
 

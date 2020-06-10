@@ -55,7 +55,7 @@ class UserStore {
         this.setUserDetails(token, userData)
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
         if (err.response.status === 401) {
           this.loggingIn = false;
           callback("Invalid email/password combination", {

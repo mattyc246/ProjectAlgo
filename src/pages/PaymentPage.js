@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import useStores from "../hooks/useStores";
 import styled from "styled-components";
-import Layout from "../components/Layout";
+import Layout from "../containers/Layout";
 import HomeNav from "../components/HomeNav";
 import PaymentSummary from "../components/PaymentSummary"
 import AddressForm from "../forms/AddressForm"
@@ -69,7 +69,11 @@ const PaymentPage = () => {
   })
 
   useEffect(() => {
-    axios.get(url.requestPaymentIntent())
+    axios.get(url.requestPaymentIntent(), {
+      headers: {
+        Authorization: `Bearer ${userStore.userToken}`
+      }
+    })
     .then((response) => {
       setPaymentIntent(response.data.data)
     })

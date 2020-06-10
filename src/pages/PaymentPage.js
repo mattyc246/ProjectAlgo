@@ -121,7 +121,7 @@ const PaymentPage = () => {
         } = result.paymentIntent;
 
         let paymentDetails = {
-          id: id,
+          payment_id: id,
           payment_method_type: payment_method_types[0],
           amount_paid: amount,
           billing_details: billingDetails,

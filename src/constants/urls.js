@@ -20,6 +20,14 @@ class URL {
   paymentSuccess = () => {
     return this.baseUrl + "/memberships/";
   };
+
+  createNewAccount = () => {
+    return this.baseUrl + "/trades/accounts/"
+  }
+
+  fetchAccounts = () => {
+    return this.baseUrl + "/trades/accounts"
+  }
 }
 
 const url = new URL();

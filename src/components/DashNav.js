@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PAGES from "../constants/pages";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -83,7 +83,7 @@ const DashNav = () => {
   const { addToast } = useToasts();
   const { userStore } = useStores();
   const { menuExpanded, setExpanded } = userStore;
-  const [pages, setPages] = useState(Object.keys(PAGES));
+  const pages = Object.keys(PAGES);
   return (
     <Nav expanded={menuExpanded}>
       <NavBrand expanded={menuExpanded}>

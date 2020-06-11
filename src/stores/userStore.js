@@ -21,6 +21,24 @@ class UserStore {
   loggedIn = localStorage.getItem("authToken");
   loggingIn = false;
 
+  logout = (callback) => {
+    this.login = {
+      email: "",
+      password: "",
+    };
+    this.userToken = null;
+    this.userData = {
+              user: null,
+              invites: null,
+              membership: null,
+            }
+    this.loggedIn = null
+    this.loggingIn = false;
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userData');
+    callback('Logged out successfully', {appearance: 'success', autoDismiss: true})
+  }
+
   setUserDetails = (authToken, userData) => {
     localStorage.setItem("authToken", authToken);
     localStorage.setItem("userData", btoa(JSON.stringify(userData)));
@@ -90,6 +108,7 @@ decorate(UserStore, {
   loggedIn: observable,
   loggingIn: observable,
   handleChange: action,
+  logout: action
 });
 
 const userStore = new UserStore();

@@ -2,6 +2,7 @@ import React from 'react'
 import DashboardLayout from '../containers/DashboardLayout'
 import UserInvite from "../components/UserInvite"
 import AccountBalances from '../components/AccountBalances'
+import AccountBreakdown from '../components/AccountBreakdown'
 
 const Dashboard = () => {
   return (
@@ -11,7 +12,9 @@ const Dashboard = () => {
         <div className="col-6">
           <AccountBalances />
         </div>
-        <div className="col-6"></div>
+        <div className="col-6">
+          <AccountBreakdown />
+        </div>
       </div>
     </DashboardLayout>
   );

@@ -12,6 +12,7 @@ class AccountStore {
   accounts = []
   submitting = false;
   fetching = true;
+  focusedAccount = null;
 
   constructor(){
     this.fetchAccounts()
@@ -24,7 +25,6 @@ class AccountStore {
       }
     })
     .then((result) => {
-      console.log(result)
       this.accounts = result.data.accounts
       this.fetching = false
     })
@@ -90,6 +90,11 @@ class AccountStore {
   handleChange = (e) => {
     this.newAccount[e.target.name] = e.target.value
   }
+
+  selectFocusAccount = (id) => {
+    let chosenAccount = this.accounts.filter(acc => acc.id === parseInt(id))[0]
+    this.focusedAccount = chosenAccount
+  }
 }
 
 decorate(AccountStore, {
@@ -97,6 +102,7 @@ decorate(AccountStore, {
   accounts: observable,
   submitting: observable,
   fetching: observable,
+  focusedAccount: observable,
   handleChange: action,
   addAccount: action,
   deleteAccount: action,

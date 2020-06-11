@@ -85,8 +85,8 @@ const DashNav = () => {
   const { menuExpanded, setExpanded } = userStore;
   const pages = Object.keys(PAGES);
   return (
-    <Nav expanded={menuExpanded}>
-      <NavBrand expanded={menuExpanded}>
+    <Nav expanded={menuExpanded.toString()}>
+      <NavBrand expanded={menuExpanded.toString()}>
         <img
           className="burger"
           src={Burger}
@@ -105,7 +105,7 @@ const DashNav = () => {
               key={idx}
               className={`mb-5 ${idx === 0 ? "mt-3" : ""}`}
               to={PAGES[page].to}
-              expanded={menuExpanded}
+              expanded={menuExpanded.toString()}
             >
               <img src={PAGES[page].navIcon} alt={page} width="25px" />
               <small>{PAGES[page].title}</small>
@@ -116,7 +116,7 @@ const DashNav = () => {
       <NavFooter>
         <NavButton
           onClick={() => userStore.logout(addToast)}
-          expanded={menuExpanded}
+          expanded={menuExpanded.toString()}
         >
           <img src={Exit} alt="sign-out" width="25px" />
           <small>Sign Out</small>

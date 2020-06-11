@@ -1,5 +1,5 @@
 class URL {
-  baseUrl = "https://d76632eb6d87.ngrok.io/api/v1";
+  baseUrl = "https://06580d7c2337.ngrok.io/api/v1";
 
   register = () => {
     return this.baseUrl + "/users/";

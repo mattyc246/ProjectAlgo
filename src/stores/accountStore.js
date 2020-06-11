@@ -13,6 +13,10 @@ class AccountStore {
   submitting = false;
   fetching = true;
 
+  constructor(){
+    this.fetchAccounts()
+  }
+
   fetchAccounts = () => {
     axios.get(url.fetchAccounts(), {
       headers: {

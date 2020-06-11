@@ -18,7 +18,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: flex-start;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-  overflow-y: hidden;
+  overflow-x: hidden;
   z-index: 2;
 `;
 

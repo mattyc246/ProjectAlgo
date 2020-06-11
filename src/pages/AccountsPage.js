@@ -8,6 +8,7 @@ import { observer } from "mobx-react";
 import useStores from "../hooks/useStores";
 import moment from "moment";
 import { useToasts } from "react-toast-notifications";
+import { useEffect } from "react";
 
 const AccountsContainer = styled.div`
   width: 100%;
@@ -66,6 +67,10 @@ const Account = styled.div`
 const AccountsPage = () => {
   const { accountStore } = useStores();
   const { addToast } = useToasts();
+
+  useEffect(() => {
+    accountStore.fetchAccounts()
+  }, [])
 
   return (
     <DashboardLayout page="accounts">

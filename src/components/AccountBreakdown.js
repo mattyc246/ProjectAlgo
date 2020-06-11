@@ -18,18 +18,36 @@ const Container = styled.div`
 
 const BreakdownFlex = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 
   .box {
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    width: 10vw;
-    height: 10vw;
+    width: 11vw;
+    height: 11vw;
     padding: 0.5rem;
     margin-bottom: 1rem;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+
+    h5 {
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+      font-weight: 500;
+    }
+
+    small {
+      font-weight: 500;
+    }
   }
 `;
 
@@ -80,12 +98,36 @@ const AccountBreakdown = () => {
       </TitleSelect>
       {accountStore.focusedAccount ? (
         <BreakdownFlex>
-          <div className="box">Test</div>
-          <div className="box">Test</div>
-          <div className="box">Test</div>
-          <div className="box">Test</div>
-          <div className="box">Test</div>
-          <div className="box">Test</div>
+          <div className="box">
+            <h5>USD</h5>
+            <p>0</p>
+            <small>Wallet Balance</small>
+          </div>
+          <div className="box">
+            <h5>USD</h5>
+            <p>0</p>
+            <small>Profit Since Inception</small>
+          </div>
+          <div className="box">
+            <h5>USD</h5>
+            <p>0</p>
+            <small>Profit Since Inception</small>
+          </div>
+          <div className="box">
+            <h5>%</h5>
+            <p>0</p>
+            <small>Highest Balance Last 24H</small>
+          </div>
+          <div className="box">
+            <h5>USD</h5>
+            <p>0</p>
+            <small>Profit Last 24H</small>
+          </div>
+          <div className="box">
+            <h5>%</h5>
+            <p>0</p>
+            <small>Profit Last 24H</small>
+          </div>
         </BreakdownFlex>
       ) : (
         <h6 className="center">

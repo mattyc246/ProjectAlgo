@@ -26,7 +26,7 @@ class UserStore {
     this.menuExpanded = expanded
   }
 
-  logout = (callback) => {
+  logout = (callback, reset) => {
     this.login = {
       email: "",
       password: "",
@@ -42,6 +42,7 @@ class UserStore {
     localStorage.removeItem('authToken');
     localStorage.removeItem('userData');
     callback('Logged out successfully', {appearance: 'success', autoDismiss: true})
+    reset()
   }
 
   setUserDetails = (authToken, userData) => {

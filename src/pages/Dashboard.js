@@ -3,8 +3,16 @@ import DashboardLayout from '../containers/DashboardLayout'
 import UserInvite from "../components/UserInvite"
 import AccountBalances from '../components/AccountBalances'
 import AccountBreakdown from '../components/AccountBreakdown'
+import useStores from '../hooks/useStores'
+import { useEffect } from 'react'
 
 const Dashboard = () => {
+  const { accountStore } = useStores()
+
+  useEffect(() => {
+    accountStore.fetchAccounts()
+  }, [])
+
   return (
     <DashboardLayout page="dashboard">
       <UserInvite />

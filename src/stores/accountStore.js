@@ -14,8 +14,17 @@ class AccountStore {
   fetching = true;
   focusedAccount = null;
 
-  constructor(){
-    this.fetchAccounts()
+  reset = () => {
+      this.newAccount = {
+        name: "",
+        api_key: "",
+        api_secret: "",
+        platform: "",
+      };
+      this.accounts = [];
+      this.submitting = false;
+      this.fetching = true;
+      this.focusedAccount = null;
   }
 
   fetchAccounts = () => {

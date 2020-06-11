@@ -10,7 +10,7 @@ import useStores from "../hooks/useStores";
 
 const Nav = styled.nav`
   height: 100%;
-  width: ${(props) => (props.expanded ? "288px" : "72px")};
+  width: ${(props) => (props.expanded === "true" ? "288px" : "72px")};
   background-color: #21243e;
   transition: 0.5s ease;
   display: flex;
@@ -34,7 +34,7 @@ const NavBrand = styled.div`
     width: 25px;
     cursor: pointer;
     transform: ${(props) =>
-      props.expanded ? "rotate(180deg)" : "rotate(0deg)"};
+      props.expanded === "true" ? "rotate(180deg)" : "rotate(0deg)"};
     transition: 0.5s ease;
   }
 
@@ -47,7 +47,7 @@ const NavBrand = styled.div`
   .brand {
     display: flex;
     align-items: center;
-    opacity: ${(props) => (props.expanded ? "1" : "0")};
+    opacity: ${(props) => (props.expanded === "true" ? "1" : "0")};
     transition: 0.5s ease;
   }
 `;
@@ -74,16 +74,17 @@ const NavButton = styled(Link)`
     color: white;
     font-weight: 500;
     padding-right: 2rem;
-    opacity: ${(props) => (props.expanded ? "1" : "0")};
+    opacity: ${(props) => (props.expanded === "true" ? "1" : "0")};
     transition: 0.5s ease;
   }
 `;
 
 const DashNav = () => {
   const { addToast } = useToasts();
-  const { userStore } = useStores();
+  const { userStore, accountStore } = useStores();
   const { menuExpanded, setExpanded } = userStore;
   const pages = Object.keys(PAGES);
+
   return (
     <Nav expanded={menuExpanded.toString()}>
       <NavBrand expanded={menuExpanded.toString()}>
@@ -115,7 +116,7 @@ const DashNav = () => {
       </NavBox>
       <NavFooter>
         <NavButton
-          onClick={() => userStore.logout(addToast)}
+          onClick={() => userStore.logout(addToast, accountStore.reset)}
           expanded={menuExpanded.toString()}
         >
           <img src={Exit} alt="sign-out" width="25px" />

@@ -33,7 +33,8 @@ const NavBrand = styled.div`
   .burger {
     width: 25px;
     cursor: pointer;
-    transform: ${props => props.expanded ? "rotate(180deg)" : "rotate(0deg)"};
+    transform: ${(props) =>
+      props.expanded ? "rotate(180deg)" : "rotate(0deg)"};
     transition: 0.5s ease;
   }
 
@@ -78,18 +79,19 @@ const NavButton = styled(Link)`
   }
 `;
 
-const DashNav = ({ expanded, setExpanded }) => {
+const DashNav = () => {
   const { addToast } = useToasts();
   const { userStore } = useStores();
+  const { menuExpanded, setExpanded } = userStore;
   const [pages, setPages] = useState(Object.keys(PAGES));
   return (
-    <Nav expanded={expanded}>
-      <NavBrand expanded={expanded}>
+    <Nav expanded={menuExpanded}>
+      <NavBrand expanded={menuExpanded}>
         <img
           className="burger"
           src={Burger}
           alt="burger"
-          onClick={() => setExpanded(!expanded)}
+          onClick={() => setExpanded(!menuExpanded)}
         />
         <div className="brand">
           <img src={Graph} alt="logo" width="30px" />
@@ -99,7 +101,12 @@ const DashNav = ({ expanded, setExpanded }) => {
       <NavBox>
         {pages.map((page, idx) => {
           return (
-            <NavButton key={idx} to={PAGES[page].to} expanded={expanded}>
+            <NavButton
+              key={idx}
+              className={`mb-5 ${idx === 0 ? "mt-3" : ""}`}
+              to={PAGES[page].to}
+              expanded={menuExpanded}
+            >
               <img src={PAGES[page].navIcon} alt={page} width="25px" />
               <small>{PAGES[page].title}</small>
             </NavButton>
@@ -109,7 +116,7 @@ const DashNav = ({ expanded, setExpanded }) => {
       <NavFooter>
         <NavButton
           onClick={() => userStore.logout(addToast)}
-          expanded={expanded}
+          expanded={menuExpanded}
         >
           <img src={Exit} alt="sign-out" width="25px" />
           <small>Sign Out</small>

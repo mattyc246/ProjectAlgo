@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/invite/:inviteCode" component={(props) => <RegistrationPage {...props} />} />
         <Route path="/login" component={(props) => <LoginPage {...props} />} />
         <PrivateRoute path="/membership/checkout" component={(props) => <PaymentPage {...props} />} />
-        <PrivateRoute path="/dashboard" component={(props) => <Dashboard {...props} />} />
+        <PrivateRoute exact path="/dashboard" component={(props) => <Dashboard {...props} />} />
         <PrivateRoute path="/dashboard/accounts" component={(props) => <AccountsPage {...props} />} />
       </Switch>
     </Elements>

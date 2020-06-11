@@ -20,6 +20,11 @@ class UserStore {
   );
   loggedIn = localStorage.getItem("authToken");
   loggingIn = false;
+  menuExpanded = true;
+
+  setExpanded = (expanded) => {
+    this.menuExpanded = expanded
+  }
 
   logout = (callback) => {
     this.login = {
@@ -107,6 +112,8 @@ decorate(UserStore, {
   userData: observable,
   loggedIn: observable,
   loggingIn: observable,
+  menuExpanded: observable,
+  setExpanded: action,
   handleChange: action,
   logout: action
 });

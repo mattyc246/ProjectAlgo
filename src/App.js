@@ -8,6 +8,7 @@ import PrivateRoute from './components/PrivateRoute';
 import {Elements} from "@stripe/react-stripe-js"
 import {loadStripe} from "@stripe/stripe-js"
 import Dashboard from './pages/Dashboard';
+import AccountsPage from './pages/AccountsPage'
 
 const stripePromise = loadStripe("pk_test_TcVbeXC9ubClxRdZU0XpoM3900YfLrn9Af");
 
@@ -19,7 +20,8 @@ const App = () => {
         <Route path="/invite/:inviteCode" component={(props) => <RegistrationPage {...props} />} />
         <Route path="/login" component={(props) => <LoginPage {...props} />} />
         <PrivateRoute path="/membership/checkout" component={(props) => <PaymentPage {...props} />} />
-        <PrivateRoute path="/dashboard" component={(props) => <Dashboard {...props} />} />
+        <PrivateRoute exact path="/dashboard" component={(props) => <Dashboard {...props} />} />
+        <PrivateRoute path="/dashboard/accounts" component={(props) => <AccountsPage {...props} />} />
       </Switch>
     </Elements>
   );

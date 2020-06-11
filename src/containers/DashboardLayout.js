@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import PAGES from "../constants/pages";
 import Texture from "../assets/images/memphis-mini.png";
@@ -71,15 +71,14 @@ const TitleBar = styled.div`
 `;
 
 const DashboardLayout = ({ children, page }) => {
-  const [expanded, setExpanded] = useState(true);
   const { userStore } = useStores();
   const {user, membership} = userStore.userData;
 
   return (
     <BehindContainer>
       <FrontLayer>
-        <DashNav expanded={expanded} setExpanded={setExpanded} />
-        <MainContent expanded={expanded}>
+        <DashNav />
+        <MainContent expanded={userStore.menuExpanded}>
           <TitleBar>
             <div className="page-title">
               <img src={PAGES[page].icon} alt="icon" width="30px" />

@@ -7,7 +7,7 @@ import { observer } from "mobx-react";
 import useStores from "../hooks/useStores";
 import moment from "moment";
 import { useEffect } from "react";
-import FancyButton from "../components/FancyButton";
+import { useToasts } from "react-toast-notifications";
 
 const AccountsContainer = styled.div`
   width: 100%;
@@ -61,6 +61,7 @@ const Account = styled.div`
 
 const AccountsPage = () => {
   const { accountStore } = useStores();
+  const { addToast } = useToasts();
 
   useEffect(() => {
     accountStore.fetchAccounts();
@@ -95,7 +96,13 @@ const AccountsPage = () => {
                       </small>
                       <small>Platform: {acc.platform}</small>
                     </div>
-                    <button>Delete</button>
+                    <button
+                      onClick={() =>
+                        accountStore.deleteAccount(acc.id, addToast)
+                      }
+                    >
+                      Delete
+                    </button>
                   </Account>
                 );
               })

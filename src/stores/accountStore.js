@@ -65,6 +65,24 @@ class AccountStore {
     })
   }
 
+  deleteAccount = (id, callback) => {
+    axios.delete(url.deleteAccount(id), {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`
+      }
+    })
+    .then((result) => {
+      if(result.data.success){
+        this.accounts = this.accounts.filter(acc => acc.id !== id)
+        callback('Deleted account!', {appearance: 'success', autoDismiss: true})
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+      callback('Something went wrong', {appearance: 'error', autoDismiss: true})
+    })
+  }
+
   handleChange = (e) => {
     this.newAccount[e.target.name] = e.target.value
   }
@@ -77,6 +95,7 @@ decorate(AccountStore, {
   fetching: observable,
   handleChange: action,
   addAccount: action,
+  deleteAccount: action,
   fetchAccounts: action
 })
 

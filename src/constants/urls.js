@@ -28,6 +28,10 @@ class URL {
   fetchAccounts = () => {
     return this.baseUrl + "/trades/accounts"
   }
+
+  deleteAccount = (id) => {
+    return this.baseUrl + `/trades/accounts/${id}`
+  }
 }
 
 const url = new URL();

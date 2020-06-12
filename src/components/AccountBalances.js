@@ -21,7 +21,9 @@ const Container = styled.div`
 `;
 
 const AccountBalances = () => {
-  const { accountStore } = useStores();
+  const {
+    rootStore: { accountStore },
+  } = useStores();
 
   return (
     <Container>

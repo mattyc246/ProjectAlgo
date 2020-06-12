@@ -1,17 +1,19 @@
-import React from 'react'
-import DashboardLayout from '../containers/DashboardLayout'
-import UserInvite from "../components/UserInvite"
-import AccountBalances from '../components/AccountBalances'
-import AccountBreakdown from '../components/AccountBreakdown'
-import useStores from '../hooks/useStores'
-import { useEffect } from 'react'
+import React from "react";
+import DashboardLayout from "../containers/DashboardLayout";
+import UserInvite from "../components/UserInvite";
+import AccountBalances from "../components/AccountBalances";
+import AccountBreakdown from "../components/AccountBreakdown";
+import useStores from "../hooks/useStores";
+import { useEffect } from "react";
 
 const Dashboard = () => {
-  const { accountStore } = useStores()
+  const {
+    rootStore: { accountStore },
+  } = useStores();
 
   useEffect(() => {
-    accountStore.fetchAccounts()
-  }, [])
+    accountStore.fetchAccounts();
+  }, []);
 
   return (
     <DashboardLayout page="dashboard">
@@ -26,6 +28,6 @@ const Dashboard = () => {
       </div>
     </DashboardLayout>
   );
-}
+};
 
-export default Dashboard
+export default Dashboard;

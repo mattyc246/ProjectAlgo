@@ -81,7 +81,8 @@ const NavButton = styled(Link)`
 
 const DashNav = () => {
   const { addToast } = useToasts();
-  const { userStore, accountStore } = useStores();
+  const { rootStore } = useStores();
+  const { userStore } = rootStore;
   const { menuExpanded, setExpanded } = userStore;
   const pages = Object.keys(PAGES);
 
@@ -116,7 +117,7 @@ const DashNav = () => {
       </NavBox>
       <NavFooter>
         <NavButton
-          onClick={() => userStore.logout(addToast, accountStore.reset)}
+          onClick={() => rootStore.logout(addToast)}
           expanded={menuExpanded.toString()}
         >
           <img src={Exit} alt="sign-out" width="25px" />

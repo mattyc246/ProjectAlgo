@@ -3,7 +3,7 @@ import styled from "styled-components";
 import DashboardLayout from "../containers/DashboardLayout";
 import NewAccountForm from "../forms/NewAccountForm";
 import Loader from "../assets/images/loader.svg";
-import MARKETS from "../constants/markets"
+import MARKETS from "../constants/markets";
 import { observer } from "mobx-react";
 import useStores from "../hooks/useStores";
 import moment from "moment";
@@ -16,10 +16,13 @@ const AccountsContainer = styled.div`
   background-color: white;
   border-radius: 5px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-  ${props => props.sticky === "true" ? `
+  ${(props) =>
+    props.sticky === "true"
+      ? `
     position: sticky;
     top: 0;
-  ` : ""}
+  `
+      : ""}
 `;
 
 const NoAccounts = styled.div`
@@ -65,12 +68,14 @@ const Account = styled.div`
 `;
 
 const AccountsPage = () => {
-  const { accountStore } = useStores();
+  const {
+    rootStore: { accountStore },
+  } = useStores();
   const { addToast } = useToasts();
 
   useEffect(() => {
-    accountStore.fetchAccounts()
-  }, [])
+    accountStore.fetchAccounts();
+  }, []);
 
   return (
     <DashboardLayout page="accounts">

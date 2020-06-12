@@ -76,7 +76,9 @@ const AccountSelect = styled.select`
 `;
 
 const AccountBreakdown = () => {
-  const { accountStore } = useStores();
+  const {
+    rootStore: { accountStore },
+  } = useStores();
 
   return (
     <Container>

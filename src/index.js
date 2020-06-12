@@ -5,14 +5,12 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
 import { Provider } from "mobx-react";
-import accountStore from "./stores/accountStore"
-import registrationStore from "./stores/registrationStore";
-import userStore from "./stores/userStore"
+import rootStore from "./stores/rootStore"
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <ToastProvider>
-    <Provider registrationStore={registrationStore} userStore={userStore} accountStore={accountStore}>
+    <Provider rootStore={rootStore}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

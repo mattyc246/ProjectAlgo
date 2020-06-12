@@ -140,6 +140,4 @@ decorate(RegistrationStore, {
   validateInviteCode: action
 });
 
-const registrationStore = new RegistrationStore();
-
-export default registrationStore;
+export default RegistrationStore;

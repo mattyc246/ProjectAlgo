@@ -5,7 +5,7 @@ import Texture from "../assets/images/memphis-mini.png";
 import DashNav from "../components/DashNav";
 import { observer } from "mobx-react";
 import useStores from "../hooks/useStores";
-import moment from "moment"
+import moment from "moment";
 
 const BehindContainer = styled.div`
   width: 100vw;
@@ -24,7 +24,8 @@ const FrontLayer = styled.div`
 `;
 
 const MainContent = styled.div`
-  width: ${(props) => (props.expanded ? "calc(100% - 288px)" : "calc(100% - 72px)")};
+  width: ${(props) =>
+    props.expanded ? "calc(100% - 288px)" : "calc(100% - 72px)"};
   height: 100%;
   transition: 0.5s ease;
 
@@ -71,8 +72,10 @@ const TitleBar = styled.div`
 `;
 
 const DashboardLayout = ({ children, page }) => {
-  const { userStore } = useStores();
-  const {user, membership} = userStore.userData;
+  const {
+    rootStore: { userStore },
+  } = useStores();
+  const { user, membership } = userStore.userData;
 
   return (
     <BehindContainer>
@@ -85,8 +88,15 @@ const DashboardLayout = ({ children, page }) => {
               <h5>{PAGES[page].title}</h5>
             </div>
             <div className="user-details">
-              <small>{user.name} | Membership Status: <span>Active</span></small>
-              <small>Expires: <span>{moment(membership.end_date).format("Do MMMM YYYY")}</span></small>
+              <small>
+                {user.name} | Membership Status: <span>Active</span>
+              </small>
+              <small>
+                Expires:{" "}
+                <span>
+                  {moment(membership.end_date).format("Do MMMM YYYY")}
+                </span>
+              </small>
             </div>
           </TitleBar>
           <div className="content">{children}</div>

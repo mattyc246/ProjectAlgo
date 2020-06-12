@@ -65,7 +65,9 @@ const CopyInput = styled.div`
 
 const UserInvite = () => {
   const [inviteUrl, setInviteUrl] = useState("");
-  const { userStore } = useStores();
+  const {
+    rootStore: { userStore },
+  } = useStores();
   const { invites } = userStore.userData;
   const { addToast } = useToasts();
   const inviteInput = useRef(null);
@@ -77,7 +79,7 @@ const UserInvite = () => {
   const copyToClipboard = (e) => {
     inviteInput.current.select();
     document.execCommand("copy");
-    addToast('Copied invite URL', {appearance: 'info', autoDismiss: true})
+    addToast("Copied invite URL", { appearance: "info", autoDismiss: true });
   };
 
   return (
@@ -90,7 +92,12 @@ const UserInvite = () => {
             </div>
             <div className="col-6">
               <CopyInput>
-                <input ref={inviteInput} type="text" readOnly="readonly" value={inviteUrl} />
+                <input
+                  ref={inviteInput}
+                  type="text"
+                  readOnly="readonly"
+                  value={inviteUrl}
+                />
                 <button onClick={() => copyToClipboard()}>Copy</button>
               </CopyInput>
             </div>

@@ -52,9 +52,11 @@ const PoweredByStripe = styled.div`
 `;
 
 const PaymentPage = () => {
-  const { userStore } = useStores();
+  const {
+    rootStore: { userStore },
+  } = useStores();
   const { addToast } = useToasts();
-  const history = useHistory()
+  const history = useHistory();
   const stripe = useStripe();
   const elements = useElements();
   const [paymentIntent, setPaymentIntent] = useState(null);
@@ -111,7 +113,10 @@ const PaymentPage = () => {
       // The payment has been processed!
       if (result.paymentIntent.status === "succeeded") {
         setPaymentSuccess(true);
-        addToast("Payment successful!", { appearance: "success", autoDismiss: true });
+        addToast("Payment successful!", {
+          appearance: "success",
+          autoDismiss: true,
+        });
 
         const {
           id,
@@ -141,10 +146,12 @@ const PaymentPage = () => {
             }
           )
           .then((result) => {
-            if(result.data.success){
-              userStore.updateMembership(result.data.membership, history)
+            if (result.data.success) {
+              userStore.updateMembership(result.data.membership, history);
             } else {
-              addToast('Unexpected error: Please contact for support', {appearance: 'error'})
+              addToast("Unexpected error: Please contact for support", {
+                appearance: "error",
+              });
             }
           })
           .catch((err) => {

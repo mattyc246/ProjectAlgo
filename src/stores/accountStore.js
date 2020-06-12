@@ -118,6 +118,4 @@ decorate(AccountStore, {
   fetchAccounts: action
 })
 
-const accountStore = new AccountStore()
-
-export default accountStore;
+export default AccountStore;

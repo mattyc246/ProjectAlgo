@@ -43,9 +43,11 @@ const FancyList = styled.ul`
   }
 `;
 
-const RegistrationForm = ({inviteCode}) => {
+const RegistrationForm = ({ inviteCode }) => {
   const { addToast } = useToasts();
-  const { registrationStore } = useStores();
+  const {
+    rootStore: { registrationStore },
+  } = useStores();
   const {
     name,
     email,
@@ -54,9 +56,16 @@ const RegistrationForm = ({inviteCode}) => {
   } = registrationStore.registration;
 
   return (
-    <LoadingForm loading={registrationStore.submitting} message={registrationStore.message}>
+    <LoadingForm
+      loading={registrationStore.submitting}
+      message={registrationStore.message}
+    >
       <h4>Registration</h4>
-      <form onSubmit={(e) => registrationStore.handleSubmit(e, inviteCode, addToast)}>
+      <form
+        onSubmit={(e) =>
+          registrationStore.handleSubmit(e, inviteCode, addToast)
+        }
+      >
         <FancyFormGroup>
           <label htmlFor="name">Name</label>
           <input

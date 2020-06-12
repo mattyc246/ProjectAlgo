@@ -41,10 +41,12 @@ const FancyFormGroup = styled.div`
 const StyledSmall = styled.small`
   font-size: 12px;
   font-weight: 500;
-`
+`;
 
 const NewAccountForm = () => {
-  const { accountStore } = useStores();
+  const {
+    rootStore: { accountStore },
+  } = useStores();
   const { addToast } = useToasts();
   const { name, api_key, api_secret, platform } = accountStore.newAccount;
 
@@ -99,7 +101,9 @@ const NewAccountForm = () => {
           })}
         </select>
       </FancyFormGroup>
-      <StyledSmall>Your details will be securely stored and encrypted.</StyledSmall>
+      <StyledSmall>
+        Your details will be securely stored and encrypted.
+      </StyledSmall>
       <FancyButton loading={accountStore.submitting} size="block">
         Add Account
       </FancyButton>

@@ -1,5 +1,5 @@
 class URL {
-  baseUrl = "https://06580d7c2337.ngrok.io/api/v1";
+  baseUrl = "https://306ab7f68137.ngrok.io/api/v1";
 
   register = () => {
     return this.baseUrl + "/users/";
@@ -22,16 +22,16 @@ class URL {
   };
 
   createNewAccount = () => {
-    return this.baseUrl + "/trades/accounts/"
-  }
+    return this.baseUrl + "/trades/accounts/";
+  };
 
   fetchAccounts = () => {
-    return this.baseUrl + "/trades/accounts"
-  }
+    return this.baseUrl + "/trades/accounts";
+  };
 
   deleteAccount = (id) => {
-    return this.baseUrl + `/trades/accounts/${id}`
-  }
+    return this.baseUrl + `/trades/accounts/${id}`;
+  };
 }
 
 const url = new URL();

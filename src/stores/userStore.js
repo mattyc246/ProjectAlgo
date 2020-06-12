@@ -26,25 +26,6 @@ class UserStore {
     this.menuExpanded = expanded
   }
 
-  logout = (callback, reset) => {
-    this.login = {
-      email: "",
-      password: "",
-    };
-    this.userToken = null;
-    this.userData = {
-              user: null,
-              invites: null,
-              membership: null,
-            }
-    this.loggedIn = null
-    this.loggingIn = false;
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('userData');
-    callback('Logged out successfully', {appearance: 'success', autoDismiss: true})
-    reset()
-  }
-
   setUserDetails = (authToken, userData) => {
     localStorage.setItem("authToken", authToken);
     localStorage.setItem("userData", btoa(JSON.stringify(userData)));
@@ -119,6 +100,4 @@ decorate(UserStore, {
   logout: action
 });
 
-const userStore = new UserStore();
-
-export default userStore;
+export default UserStore;

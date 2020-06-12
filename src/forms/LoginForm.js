@@ -34,7 +34,9 @@ const FancyFormGroup = styled.div`
 `;
 
 const LoginForm = () => {
-  const { userStore } = useStores();
+  const {
+    rootStore: { userStore },
+  } = useStores();
   const { addToast } = useToasts();
   const { email, password } = userStore.login;
 
